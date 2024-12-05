@@ -6,32 +6,38 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/04 20:33:30 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/05 17:00:58 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= so_long
-
-CFILES 	=
-OFILES 	= $(CFILES:.c=.o)
-
 LIBMLX	:= ./MLX42
 
+CFILES 	= src/test.c 
+OFILES 	= $(CFILES:.c=.o)
+
+all: $(NAME)
+
 $(NAME): $(OFILES)
-	cd libft && make all
-	cd ../
-	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4	
-	ar rcs $(NAME) $(OFILES)
-	cp libft/libft.a .
-	cp 
-	mv libft.a libmlx.a $(NAME)
+	make all -C libft
+	cmake $(LIBMLX) -B $(LIBMLX)/build && make all -C $(LIBMLX)/build
+	cc $(CFILES) -o $(NAME)
+	@cp libft/libft.a .
+	@rm libft/libft.a
+	@cp $(LIBMLX)/build/libmlx42.a .
 
 clean:
-	rm -rf $(OFILES)
-	rm -rf $
+	@make clean -C libft
+	@make clean -C $(LIBMLX)/build
+	@rm -f $(OFILES)
+	@rm -rf $
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
+	rm -f libft.a && rm -f libmlx42.a
+	@make clean -C libft
+	@make clean -C $(LIBMLX)/build
+	
 
 re: clean all
 

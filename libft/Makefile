@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 20:46:28 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/04 18:15:09 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/05 16:51:29 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,11 @@ $(NAME): $(OFILES)
 	@mv $(OFILES) OFILES_LIBFT
 
 clean:
-	@cd ./OFILES_LIBFT && rm -f $(OFILES)
-	@cd ..
-	@rm -rf OFILES_LIBFT
+	@ [ -d OFILES_LIBFT ] && rm -rf OFILES_LIBFT || true
 
 fclean: clean
 	@rm -f $(NAME)
+	
 
 re: fclean all
 
