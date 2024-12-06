@@ -22,17 +22,17 @@
 // 	mlx_loop(mlx);
 
 // 	// Optional, terminate will clean up any leftovers,
-		//this is just to demonstrate.
+//this is just to demonstrate.
 // 	mlx_delete_image(mlx, img);
 // 	mlx_delete_texture(texture);
 // 	mlx_terminate(mlx);
 // 	return (EXIT_SUCCESS);
 // }
 
-// int	main(void)
-// {
-// 	int x;
-// 	x = 0;
-// 	x *= x;
-// 	return(0);
-// }
+#include "so_long.h"
+
+int	main(void)
+{
+	ft_makewindow();
+	return (0);
+}

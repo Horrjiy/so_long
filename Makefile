@@ -6,53 +6,46 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/06 16:00:16 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/06 21:48:22 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= so_long
 LIBMLX	= ./MLX42
 
-CFILES 	= src/test.c src/main_so_long.c src/eee.c
+CFILES 	= src/test.c src/main_so_long.c src/initialize.c
 OFILES 	= $(CFILES:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast
 MLXFLAGS = -ldl -lglfw -pthread -lm
 
-all: clone $(NAME)
+all: $(NAME)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-clone:
-	@if [ ! -d "MLX42" ]; then \
-		echo "\033[1;34mDownloading MLX42...\033[0m"; \
-		git clone https://github.com/codam-coding-college/MLX42.git MLX42 > /dev/null 2>&1; \
-	else \
-		echo "\033[1;31mMLX42 exists!\033[0m"; \
-	fi
+$(LIBMLX)/.git:
+	@echo "\033[1;34mDownloading MLX42...\033[0m"
+	@git clone https://github.com/codam-coding-college/MLX42.git MLX42 > /dev/null 2>&1 
 
-
-$(NAME): $(OFILES)
-	@echo "\033[1;32mCREATE PROGRAM: SO_LONG\033[0m"
+$(NAME): $(LIBMLX)/.git $(OFILES)
 	@make all -C libft
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make all -C $(LIBMLX)/build -j4
-	@cp libft/libft.a .
-	@rm libft/libft.a
-	@cp $(LIBMLX)/build/libmlx42.a .
-	@cc $(CFILES) libft.a libmlx42.a $(MLXFLAGS) -I $(LIBMLX)/include -o $(NAME) 
+	@cc $(CFILES) libft/libft.a \
+		$(LIBMLX)/build/libmlx42.a $(MLXFLAGS) -I $(LIBMLX)/include -o $(NAME) 
+	@echo "\033[1;32mCREATE PROGRAM: SO_LONG\033[0m"
 
 clean:
-	@make clean -C libft
-	@make clean -C $(LIBMLX)/build
+	@echo "\033[1;33mCLEAN SO_LONG\033[0m"
+	@make fclean -C libft
 	@rm -f $(OFILES)
-	@rm -f libft.a && rm -f libmlx42.a
+	@echo "\033[1;33mMLX42: delete complete folder\033[0m"
+	@rm -rf ./MLX42
 
 fclean: clean
+	@echo "\033[1;33mREMOVE PROGRAM SO_LONG\033[0m"
 	@rm -f $(NAME)
-	@make fclean -C libft
-	@rm -rf ./MLX42
-	
+
 re: clean all
 
-.PHONY: all clone clean fclean re
+.PHONY: all clean fclean re
