@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 20:46:28 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/05 16:51:29 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/06 15:40:01 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,15 +29,22 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+
 $(NAME): $(OFILES)
+	@echo "\033[1;32mlibft: create libft.a\033[0m"
 	@ar rcs $(NAME) $(OFILES)
 	@mkdir -p OFILES_LIBFT
 	@mv $(OFILES) OFILES_LIBFT
 
 clean:
+	@echo "\033[1;33mlibft: rm .o files\033[0m"
 	@ [ -d OFILES_LIBFT ] && rm -rf OFILES_LIBFT || true
 
 fclean: clean
+	@echo "\033[1;33mlibft: remove libft.a\033[0m"
 	@rm -f $(NAME)
 	
 

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main_so_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 16:52:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/05 20:13:12 by mpoplow          ###   ########.fr       */
+/*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
+/*   Updated: 2024/12/06 14:26:57 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/libft.h"
+int	main(void)
+{
+	int		x;
+	mlx_t	*bollwerk;
 
-#endif
+	//	mlx_image_t	*sprudel;
+	bollwerk = mlx_init(69, 69, "ruppert", true);
+	// sprudel = mlx_new_image(bollwerk, 69, 69);
+	// mlx_image_to_window(bollwerk, sprudel, 0, 0);
+	mlx_loop(bollwerk);
+	mlx_terminate(bollwerk);
+	x = 69;
+	return (69);
+}
