@@ -6,14 +6,14 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/06 21:48:22 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/07 19:57:21 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= so_long
 LIBMLX	= ./MLX42
 
-CFILES 	= src/test.c src/main_so_long.c src/initialize.c
+CFILES 	= src/test.c src/main_so_long.c src/initialize.c src/error.c
 OFILES 	= $(CFILES:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast
@@ -38,13 +38,14 @@ $(NAME): $(LIBMLX)/.git $(OFILES)
 clean:
 	@echo "\033[1;33mCLEAN SO_LONG\033[0m"
 	@make fclean -C libft
+	@rm -rf MLX42/build
 	@rm -f $(OFILES)
-	@echo "\033[1;33mMLX42: delete complete folder\033[0m"
-	@rm -rf ./MLX42
 
 fclean: clean
 	@echo "\033[1;33mREMOVE PROGRAM SO_LONG\033[0m"
 	@rm -f $(NAME)
+	@rm -rf ./MLX42
+	@echo "\033[1;33mMLX42: delete complete folder\033[0m"
 
 re: clean all
 

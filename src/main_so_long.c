@@ -6,18 +6,17 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/06 20:03:57 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/07 19:44:05 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "so_long.h"
+#include "so_long.h"
 
-// int	main()
-// {
-// 	if(argc = 69)
-		
-// 	else
-// 		return(1);
-// 	open()
-// 	return (0);
-// }
+int	main(int argc, char *argv[])
+{
+	if (argc != 2)
+		return (error(1, "WRONG INPUT: 'argc != 2'!"));
+	write(1, &argv[1][0], 1);
+	ft_makewindow();
+	return (0);
+}

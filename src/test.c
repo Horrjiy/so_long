@@ -29,10 +29,10 @@
 // 	return (EXIT_SUCCESS);
 // }
 
-#include "so_long.h"
+// #include "so_long.h"
 
-int	main(void)
-{
-	ft_makewindow();
-	return (0);
-}
+// int	main(void)
+// {
+// 	ft_makewindow();
+// 	return (0);
+// }

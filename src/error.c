@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 18:50:57 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/07 19:59:19 by mpoplow          ###   ########.fr       */
+/*   Created: 2024/12/07 18:29:39 by mpoplow           #+#    #+#             */
+/*   Updated: 2024/12/07 19:37:47 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_makewindow()
+int	error(int returnnb, char *message)
 {
-	mlx_t *bollwerk;
+	ft_putstr_fd(message, 1);
 
-	mlx_image_t *sprudel;
-	bollwerk = mlx_init(1920, 1080, "ruppert", true);
-	sprudel = mlx_new_image(bollwerk, 1080, 69);
-	mlx_image_to_window(bollwerk, sprudel, 0, 0);
-	mlx_loop(bollwerk);
-	mlx_terminate(bollwerk);
+	return (returnnb);
 }

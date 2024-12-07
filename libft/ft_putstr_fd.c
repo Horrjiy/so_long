@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 12:07:36 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/10/27 12:43:19 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:59:01 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if(!s)
+		return;
 	while (s[i])
 	{
 		write(fd, &s[i], 1);

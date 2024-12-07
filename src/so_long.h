@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:52:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/06 20:08:02 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/07 19:28:11 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 # include "../libft/libft.h"
 
 void	ft_makewindow(void);
+int		error(int returnnb, char *message);
 
 #endif
