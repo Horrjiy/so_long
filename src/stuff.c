@@ -6,20 +6,9 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:50:57 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/07 19:59:19 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/08 18:12:11 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_makewindow()
-{
-	mlx_t *bollwerk;
-
-	mlx_image_t *sprudel;
-	bollwerk = mlx_init(1920, 1080, "ruppert", true);
-	sprudel = mlx_new_image(bollwerk, 1080, 69);
-	mlx_image_to_window(bollwerk, sprudel, 0, 0);
-	mlx_loop(bollwerk);
-	mlx_terminate(bollwerk);
-}

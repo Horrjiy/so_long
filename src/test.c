@@ -22,7 +22,7 @@
 // 	mlx_loop(mlx);
 
 // 	// Optional, terminate will clean up any leftovers,
-//this is just to demonstrate.
+//	this is just to demonstrate.
 // 	mlx_delete_image(mlx, img);
 // 	mlx_delete_texture(texture);
 // 	mlx_terminate(mlx);

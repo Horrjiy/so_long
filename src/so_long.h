@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:52:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/07 19:28:11 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/08 20:35:06 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 void	ft_makewindow(void);
-int		error(int returnnb, char *message);
+int		ft_error(int returnnb, char *message);
+int32_t	color_code(int r, int g, int b, int a);
+void	ft_hook(void *vptr);
 
 #endif
