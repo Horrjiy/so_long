@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:52:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/08 20:35:06 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/09 17:42:10 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@ void	ft_makewindow(void);
 int		ft_error(int returnnb, char *message);
 int32_t	color_code(int r, int g, int b, int a);
 void	ft_hook(void *vptr);
+
+typedef struct data
+{
+
+}
 
 #endif

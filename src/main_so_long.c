@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/08 20:36:12 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/09 17:33:58 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,40 @@ int	main(int argc, char *argv[])
 
 void	ft_hook(void *vptr)
 {
-	mlx_t* mlx = vptr;
+	mlx_t	*mlx;
 
+	mlx = vptr;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_A))
+	{
+		mlx.
+	}
 	return ;
 }
 
 void	ft_makewindow(void)
 {
-	mlx_t		*bollwerk;
-	mlx_image_t	*sprudel;
+	mlx_t			*mlxstruct;
+	mlx_image_t		*img;
+	mlx_texture_t	*pic_kek;
 
-	bollwerk = mlx_init(1920, 1080, "so_long mpoplow42", true);
-	if (!bollwerk)
-		return;
-	sprudel = mlx_new_image(bollwerk, 1920, 1080);
-	ft_memset(sprudel->pixels, 9853, sprudel->width * sprudel->height
-			* sizeof(int32_t));
-	mlx_image_to_window(bollwerk, sprudel, 0, 0);
-	mlx_loop_hook(bollwerk, ft_hook, bollwerk);
-	mlx_loop(bollwerk);
-	mlx_terminate(bollwerk);
+	mlxstruct = mlx_init(1920, 1080, "so_long mpoplow42", true);
+	if (!mlxstruct)
+		return ;
+	img = mlx_new_image(mlxstruct, 1920, 1080);
+	ft_memset(img->pixels, 9853, img->width * img->height * sizeof(int32_t));
+	mlx_image_to_window(mlxstruct, img, 0, 0);
+	pic_kek = mlx_load_png("img/kek.png");
+	if (!pic_kek)
+		ft_error(1, "");
+	img = mlx_texture_to_image(mlxstruct, pic_kek);
+	if (!img)
+		ft_error(1, "");
+	mlx_image_to_window(mlxstruct, img, 500, 500);
+	mlx_loop_hook(mlxstruct, ft_hook, mlxstruct);
+	mlx_loop(mlxstruct);
+	mlx_terminate(mlxstruct);
 }
 
 int32_t	color_code(int r, int g, int b, int a)
