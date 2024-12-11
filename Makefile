@@ -6,14 +6,14 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/09 11:23:27 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/11 17:00:56 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= so_long
 LIBMLX	= ./MLX42
 
-CFILES 	= src/test.c src/main_so_long.c src/stuff.c src/error.c
+CFILES 	= src/loadimg.c src/main.c src/stuff.c src/error.c
 OFILES 	= $(CFILES:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   loadimg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 12:07:36 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/11 16:14:30 by mpoplow          ###   ########.fr       */
+/*   Created: 2024/12/11 16:03:50 by mpoplow           #+#    #+#             */
+/*   Updated: 2024/12/11 17:11:51 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	loadimg_e(mlx_t *mlx)
 {
-	int	i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	mlx_texture_t *tex_e;
+	mlx_image_t *img_e;
+	tex_e = mlx_load_png("img/P_cake.png");
+	if (!tex_e)
+		ft_error(1, "");
+	img_e = mlx_texture_to_image(mlx, tex_e);
+	if (!img_e)
+		ft_error(1, "");
+	mlx_image_to_window(mlx, img_e, 64, 64);
+	return(0);
 }

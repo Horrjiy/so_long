@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:52:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/09 17:42:10 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/11 17:16:24 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-void	ft_makewindow(void);
+void	ft_makewindow(mlx_t *mlx);
 int		ft_error(int returnnb, char *message);
 int32_t	color_code(int r, int g, int b, int a);
 void	ft_hook(void *vptr);
+int		loadimg_e(mlx_t *mlx);
 
-typedef struct data
+typedef struct s_all
 {
-
-}
+	int	cake_x;
+	int	cake_y;
+}		t_all;
 
 #endif
