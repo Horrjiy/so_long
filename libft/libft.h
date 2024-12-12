@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:35:04 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/11 22:45:53 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/12 15:58:33 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <unistd.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -43,7 +48,7 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *src);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strjoin_free(char *s1, char const *s2)
+char	*ft_strjoin_free(char *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
@@ -62,4 +67,12 @@ int		lowxfound(int f, int *wrc);
 int		capxfound(int f, int *wrc);
 int		pfound(void *f, int *wrc);
 int		percfound(int *wrc);
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+size_t	nlstrlen(const char *s);
+char	*buff_strjoin(char *endstr, char *stat);
+int		move(char statarr[]);
+int		nlcheck(char *str, char *statarr);
+int		setstat(int fd, char *statarr);
+char	*readerror(int x, char *endstr);
 #endif

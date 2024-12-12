@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:16:42 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/11 22:47:54 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/12 16:00:28 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strjoin_free(char *s1, char const *s2)
 	if (!dest)
 		return (NULL);
 	if (!s1)
-		return (s2);
+		return ((char *)s2);
 	i = 0;
 	while (s1[i])
 	{

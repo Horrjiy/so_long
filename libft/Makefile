@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 20:46:28 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/11 22:46:31 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/12 16:00:04 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,13 @@ CFILES = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 			ft_toupper.c ft_tolower.c \
 			ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c \
 			ft_calloc.c ft_strdup.c \
-			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_stjoin_free.c\
+			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strjoin_free.c\
 			ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 			ft_printf.c \
 			ft_pf_putstrchar_sc_perc.c \
 			ft_pf_putnbr_di.c ft_pf_putunbr_u.c \
 			ft_pf_puthex_lowx.c ft_pf_puthex_capx.c ft_pf_puthexaddress_p.c \
+			get_next_line.c get_next_line_utils.c \
 			
 OFILES = $(CFILES:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
