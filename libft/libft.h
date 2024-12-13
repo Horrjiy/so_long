@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:35:04 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/12 15:58:33 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/13 19:15:12 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,8 @@ int		move(char statarr[]);
 int		nlcheck(char *str, char *statarr);
 int		setstat(int fd, char *statarr);
 char	*readerror(int x, char *endstr);
+char	*ft_text_strjoin(char *endstr, char *stat);
+char	*text_readerror(char *endstr);
+char	*get_next_text(int fd);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/11 22:18:30 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/13 19:47:25 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,31 @@
 
 int	main(int argc, char *argv[])
 {
-	mlx_t	*mlx;
+	t_all	all;
 
-	// t_all	*all;
 	if (argc != 2)
-		return (ft_error(1, "WRONG INPUT: 'argc != 2'!"));
-	write(1, &argv[1][0], 1);
-	mlx = mlx_init(1920, 1080, "so_long mpoplow42", true);
-	if (!mlx)
-		return (ft_error(1, "mlx failed"));
-	// mapanalyze(all, argv[1])
-	ft_makewindow(mlx);
-	mlx_loop_hook(mlx, ft_hook, mlx);
-	loadimg_e(mlx);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+		return (ft_error(1, "WRONG INPUT: 'argc != 2'!"), 1);
+	ft_bzero(&all, sizeof(t_all));
+	all.mlx = mlx_init(1920, 1080, "so_long mpoplow42", true);
+	if (!all.mlx)
+		return (ft_error(1, "mlx failed"), 1);
+	ft_mapanalyze(&all, argv[1]);
+	ft_makewindow(all.mlx);
+	mlx_loop_hook(all.mlx, ft_hook, &all);
+	ft_loadimg_e(all.mlx);
+	mlx_loop(all.mlx);
+	mlx_terminate(all.mlx);
 	return (0);
 }
 
 void	ft_hook(void *vptr)
 {
-	mlx_t	*mlx;
+	t_all	*hookall;
 
-	mlx = vptr;
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
-	if (mlx_is_key_down(mlx, MLX_KEY_A))
+	hookall = vptr;
+	if (mlx_is_key_down(hookall->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(hookall->mlx);
+	if (mlx_is_key_down(hookall->mlx, MLX_KEY_A))
 	{
 	}
 }

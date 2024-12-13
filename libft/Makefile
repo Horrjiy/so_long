@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 20:46:28 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/12 16:00:04 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/13 19:07:13 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ CFILES = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 			ft_pf_putnbr_di.c ft_pf_putunbr_u.c \
 			ft_pf_puthex_lowx.c ft_pf_puthex_capx.c ft_pf_puthexaddress_p.c \
 			get_next_line.c get_next_line_utils.c \
+			get_next_text.c \
 			
 OFILES = $(CFILES:.c=.o)
 CFLAGS = -Wall -Wextra -Werror

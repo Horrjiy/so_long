@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_text.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 19:35:53 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/13 18:26:14 by mpoplow          ###   ########.fr       */
+/*   Created: 2024/11/15 18:46:37 by mpoplow           #+#    #+#             */
+/*   Updated: 2024/12/13 19:14:51 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	nlstrlen(const char *s)
+char	*ft_text_strjoin(char *endstr, char *stat)
 {
-	size_t	len;
-
-	len = 0;
-	if (s == NULL)
-		return (0);
-	while (s[len] && s[len] != '\n')
-		len++;
-	if (s[len] == '\n')
-		len++;
-	return (len);
-}
-
-char	*buff_strjoin(char *endstr, char *stat)
-{
-	int		i;
+	size_t	i;
 	size_t	endlen;
 	size_t	statlen;
 	char	*dest;
 
 	endlen = ft_strlen(endstr);
-	statlen = nlstrlen(stat);
+	statlen = ft_strlen(stat);
 	dest = malloc(endlen + statlen + 1);
 	if (!dest)
 		return (free(endstr), NULL);
@@ -46,38 +32,43 @@ char	*buff_strjoin(char *endstr, char *stat)
 	while (stat[i])
 	{
 		dest[endlen + i] = stat[i];
-		if (stat[i++] == '\n')
-			break ;
+		i++;
 	}
 	dest[endlen + i] = '\0';
 	free(endstr);
 	return (dest);
 }
 
-int	move(char statarr[])
+char	*text_readerror(char *endstr)
 {
-	size_t	i;
+	if (endstr)
+		free(endstr);
+	return (NULL);
+}
 
-	while (statarr[0] != '\n' && statarr[0] != '\0')
+char	*get_next_text(int fd)
+{
+	static char	statarr[BUFFER_SIZE + 1];
+	char		*endstr;
+	int			x;
+
+	endstr = NULL;
+	while (1)
 	{
-		i = 0;
-		while (statarr[i + 1] != '\0')
+		if (statarr[0] != '\0')
 		{
-			statarr[i] = statarr[i + 1];
-			i++;
+			endstr = ft_text_strjoin(endstr, statarr);
+			if (!endstr)
+				return (NULL);
+			ft_bzero(statarr, BUFFER_SIZE + 1);
 		}
-		statarr[i] = '\0';
+		x = read(fd, statarr, BUFFER_SIZE);
+		if (x > 0)
+			statarr[x] = '\0';
+		else if (x < 0)
+			return (readerror(x, endstr));
+		if (x == 0)
+			return (endstr);
 	}
-	i = 0;
-	if (statarr[0] == '\n')
-	{
-		while (statarr[i + 1] != '\0')
-		{
-			statarr[i] = statarr[i + 1];
-			i++;
-		}
-		statarr[i] = '\0';
-		return (1);
-	}
-	return (0);
+	return (endstr);
 }
