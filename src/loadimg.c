@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:03:50 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/11 22:18:20 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/16 14:49:28 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	ft_loadimg_e(mlx_t *mlx)
 
 	tex_e = mlx_load_png("img/P_cake.png");
 	if (!tex_e)
-		ft_error(1, "");
+		ft_error("", NULL, NULL);
 	img_e = mlx_texture_to_image(mlx, tex_e);
 	if (!img_e)
-		ft_error(1, "");
+		ft_error("", NULL, NULL);
 	mlx_image_to_window(mlx, img_e, 64, 64);
 	return (0);
 }

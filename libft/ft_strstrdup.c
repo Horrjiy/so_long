@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strstrdup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 18:29:39 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/17 22:10:05 by mpoplow          ###   ########.fr       */
+/*   Created: 2024/10/22 15:10:03 by mpoplow           #+#    #+#             */
+/*   Updated: 2024/12/17 23:34:12 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	freem(char **map)
+char	**ft_strstrdup(const char **src)
 {
-	int	i;
+	char	**dest;
+	size_t	i;
 
 	i = 0;
-	if (map)
+	while (src[i] != NULL)
+		i++;
+	dest = malloc((i + 1) * sizeof(char *));
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (src[i] != NULL && src != NULL)
 	{
-		while (map[i] && map[i] != NULL)
-			free(map[i++]);
-		free(map);
+		dest[i] = ft_strdup((const char *)src[i]);
+		if (!dest[i])
+		{
+			while (i > 0)
+				free(dest[--i]);
+			free(dest);
+			return (NULL);
+		}
+		i++;
 	}
+	dest[i] = NULL;
+	return (dest);
 }
-
-void	ft_error(char *message, char *s, char **map)
-{
-	ft_printf("Error\n%s", message);
-	if (s)
-		free(s);
-	freem(map);
-	exit(1 & 1);
-}
-
-// ft_putstr_fd(message, 1);

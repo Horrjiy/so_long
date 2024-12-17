@@ -6,14 +6,15 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/12 17:57:20 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/17 17:12:53 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= so_long
 LIBMLX	= ./MLX42
 
-CFILES 	= src/loadimg.c src/main.c src/error.c src/mapanalyze.c
+CFILES 	= src/loadimg.c src/main.c src/error.c \
+			src/mapcheck.c src/mapanalyze.c
 OFILES 	= $(CFILES:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast
@@ -30,7 +31,8 @@ $(LIBMLX)/.git:
 
 $(NAME): $(LIBMLX)/.git $(OFILES)
 	@make all -C libft
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make all -C $(LIBMLX)/build -j4
+	@cmake $(LIBMLX) -B $(LIBMLX)/build > /dev/null 2>&1
+	@make all -C $(LIBMLX)/build -j4 > /dev/null 2>&1
 	@cc $(CFILES) libft/libft.a \
 		$(LIBMLX)/build/libmlx42.a $(MLXFLAGS) -I $(LIBMLX)/include -o $(NAME) 
 	@echo "\033[1;32mCREATE PROGRAM: SO_LONG\033[0m"

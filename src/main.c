@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/13 19:47:25 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/17 23:09:56 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	main(int argc, char *argv[])
 	t_all	all;
 
 	if (argc != 2)
-		return (ft_error(1, "WRONG INPUT: 'argc != 2'!"), 1);
+		return (ft_error("WRONG INPUT: 'argc != 2'!", NULL, NULL), 1);
 	ft_bzero(&all, sizeof(t_all));
-	all.mlx = mlx_init(1920, 1080, "so_long mpoplow42", true);
-	if (!all.mlx)
-		return (ft_error(1, "mlx failed"), 1);
 	ft_mapanalyze(&all, argv[1]);
+	all.mlx = mlx_init((64 * all.mapsizex), (64 * all.mapsizey), "so_long mpoplow42", true);
+	if (!all.mlx)
+		return (ft_error("mlx failed", NULL, NULL), 1);
 	ft_makewindow(all.mlx);
 	mlx_loop_hook(all.mlx, ft_hook, &all);
 	ft_loadimg_e(all.mlx);
