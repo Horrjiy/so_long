@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:05:27 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/17 23:45:41 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/18 10:35:02 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,10 @@ char	**ft_mapread(char *argv, t_all *all)
 
 void	ft_mapanalyze(t_all *all, char *argv)
 {
-	char	**map;
-
 	all->mapsizex = 0;
 	all->mapsizey = 0;
-	map = ft_mapread(argv, all);
-	ft_wallcheck(all, map);
-	ft_wallsidecheck(all, map);
-	ft_waycheck(map, all);
+	all->map = ft_mapread(argv, all);
+	ft_wallcheck(all, all->map);
+	ft_wallsidecheck(all, all->map);
+	ft_waycheck(all->map, all);
 }

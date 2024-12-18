@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 18:29:39 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/17 22:10:05 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/18 11:45:50 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	freem(char **map)
 
 void	ft_error(char *message, char *s, char **map)
 {
-	ft_printf("Error\n%s", message);
+	ft_printf("Error\n%s\n", message);
 	if (s)
 		free(s);
 	freem(map);

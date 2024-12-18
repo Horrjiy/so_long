@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/17 23:09:56 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/18 12:06:01 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ int	main(int argc, char *argv[])
 		return (ft_error("WRONG INPUT: 'argc != 2'!", NULL, NULL), 1);
 	ft_bzero(&all, sizeof(t_all));
 	ft_mapanalyze(&all, argv[1]);
-	all.mlx = mlx_init((64 * all.mapsizex), (64 * all.mapsizey), "so_long mpoplow42", true);
-	if (!all.mlx)
-		return (ft_error("mlx failed", NULL, NULL), 1);
-	ft_makewindow(all.mlx);
+	ft_makewindow(&all);
+	ft_buildmap(&all);
 	mlx_loop_hook(all.mlx, ft_hook, &all);
-	ft_loadimg_e(all.mlx);
 	mlx_loop(all.mlx);
 	mlx_terminate(all.mlx);
 	return (0);
@@ -43,19 +40,15 @@ void	ft_hook(void *vptr)
 	}
 }
 
-void	ft_makewindow(mlx_t *mlx)
+void	ft_makewindow(t_all *all)
 {
 	mlx_image_t	*img;
 
-	img = mlx_new_image(mlx, 1920, 1080);
-	ft_memset(img->pixels, 9853, img->width * img->height * sizeof(int32_t));
-	mlx_image_to_window(mlx, img, 0, 0);
-}
-
-int32_t	ft_color_code(int r, int g, int b, int a)
-{
-	int32_t	rgba_value;
-
-	rgba_value = (r << 24) | (g << 16) | (b << 8) | (a << 0);
-	return (rgba_value);
+	all->mlx = mlx_init((64 * all->mapsizex), (64 * all->mapsizey),
+			"so_long mpoplow42", false);
+	if (!all->mlx)
+		ft_error("mlx failed", NULL, all->map);
+	img = mlx_new_image(all->mlx, (64 * all->mapsizex), (64 * all->mapsizey));
+	ft_memset(img->pixels, 0, img->width * img->height * sizeof(int32_t));
+	mlx_image_to_window(all->mlx, img, 0, 0);
 }
