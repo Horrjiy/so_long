@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:05:27 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/25 21:55:52 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/25 23:31:43 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,28 @@ void	ft_p_and_e(t_all *all, char *temp)
 {
 	int	i;
 
-	i = 0;
-	while (temp[i])
+	i = -0;
+	while (temp[++i])
 	{
-		if (temp[i] == 'C')
-			all->countc++;
-		if (temp[i] == 'E')
-			all->counte++;
-		if (temp[i] == 'P')
-			all->countp++;
-		if (temp[i] == '\n' && temp[i + 1] == '\n')
-			ft_error("too many newlines in map!", temp, NULL);
-			i++;
+		if (temp[i] == 'C' || temp[i] == 'E' || temp[i] == 'P' || temp[i] == '0'
+			|| temp[i] == '1')
+		{
+			if (temp[i] == 'C')
+				all->countc++;
+			if (temp[i] == 'E')
+				all->counte++;
+			if (temp[i] == 'P')
+				all->countp++;
+			if (temp[i] == '\n' && temp[i + 1] == '\n')
+				ft_error("too many newlines in map!", temp, NULL);
+		}
+		else
+			ft_error("Map contains invalid characters", temp, NULL);
 	}
 	if (all->countp != 1 || all->counte != 1)
 		ft_error("player or exit count is wrong!", temp, NULL);
 	if (all->countc < 1)
-		ft_error("Map must contain at least 1 collectible to be valid", temp, NULL);
+		ft_error("Map must contain at least 1 collectible", temp, NULL);
 }
 
 //reads the map.ber and splits it into a 2D-array
