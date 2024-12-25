@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:05:27 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/18 10:35:02 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/25 21:37:41 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,15 @@ void	ft_p_and_e(t_all *all, char *temp)
 	i = 0;
 	while (temp[i])
 	{
-		if (temp[i] == '0')
-			all->count0++;
-		if (temp[i] == '1')
-			all->count1++;
 		if (temp[i] == 'C')
 			all->countc++;
 		if (temp[i] == 'E')
 			all->counte++;
 		if (temp[i] == 'P')
 			all->countp++;
-		i++;
+		if (temp[i] == '\n' && temp[i + 1] == '\n')
+			ft_error("too many newlines in map!", temp, NULL);
+			i++;
 	}
 	if (all->countp != 1 || all->counte != 1)
 		ft_error("player or exit count is wrong!", temp, NULL);

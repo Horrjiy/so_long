@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/18 12:06:01 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/25 19:12:54 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,13 @@ int	main(int argc, char *argv[])
 	ft_mapanalyze(&all, argv[1]);
 	ft_makewindow(&all);
 	ft_buildmap(&all);
-	mlx_loop_hook(all.mlx, ft_hook, &all);
+	all.movescount = 0;
+	mlx_loop_hook(all.mlx, ft_playerhook, &all);
+	mlx_loop_hook(all.mlx, ft_checkhook, &all);
 	mlx_loop(all.mlx);
 	mlx_terminate(all.mlx);
+	freem(all.map);
 	return (0);
-}
-
-void	ft_hook(void *vptr)
-{
-	t_all	*hookall;
-
-	hookall = vptr;
-	if (mlx_is_key_down(hookall->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(hookall->mlx);
-	if (mlx_is_key_down(hookall->mlx, MLX_KEY_A))
-	{
-	}
 }
 
 void	ft_makewindow(t_all *all)

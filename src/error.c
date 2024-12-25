@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 18:29:39 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/18 11:45:50 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/25 19:17:33 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,3 @@ void	ft_error(char *message, char *s, char **map)
 	freem(map);
 	exit(1 & 1);
 }
-
-// ft_putstr_fd(message, 1);

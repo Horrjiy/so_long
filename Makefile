@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/18 11:10:28 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/18 16:30:44 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ LIBMLX	= ./MLX42
 
 CFILES 	= src/loadimg.c src/main.c src/error.c \
 			src/mapcheck.c src/mapanalyze.c src/mapbuild.c \
+			src/player.c src/checkhook.c \
 			
 OFILES 	= $(CFILES:.c=.o)
 
