@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:05:27 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/25 21:37:41 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/25 21:55:52 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_p_and_e(t_all *all, char *temp)
 	}
 	if (all->countp != 1 || all->counte != 1)
 		ft_error("player or exit count is wrong!", temp, NULL);
+	if (all->countc < 1)
+		ft_error("Map must contain at least 1 collectible to be valid", temp, NULL);
 }
 
 //reads the map.ber and splits it into a 2D-array
