@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:05:27 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/25 23:31:43 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/27 18:19:54 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_p_and_e(t_all *all, char *temp)
 	while (temp[++i])
 	{
 		if (temp[i] == 'C' || temp[i] == 'E' || temp[i] == 'P' || temp[i] == '0'
-			|| temp[i] == '1')
+			|| temp[i] == '1' || temp[i] == '\n')
 		{
 			if (temp[i] == 'C')
 				all->countc++;
