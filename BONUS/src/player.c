@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:17:07 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/25 19:01:57 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/29 18:35:06 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	ft_playerleft(t_all *hookall)
 			/ 64][(hookall->img_player->instances[0].x - 64) / 64] != '1')
 	{
 		hookall->img_player->instances[0].x -= 64;
-		ft_printf("Number of moves: %u\n", ++hookall->movescount);
+			++hookall->movescount;
+		ft_stepcount_bonus(hookall);
 	}
 	usleep(150000);
 }
@@ -29,7 +30,8 @@ static void	ft_playerright(t_all *hookall)
 			/ 64][(hookall->img_player->instances[0].x + 64) / 64] != '1')
 	{
 		hookall->img_player->instances[0].x += 64;
-		ft_printf("Number of moves: %u\n", ++hookall->movescount);
+			++hookall->movescount;
+		ft_stepcount_bonus(hookall);
 	}
 	usleep(150000);
 }
@@ -40,7 +42,8 @@ static void	ft_playerup(t_all *hookall)
 			/ 64][hookall->img_player->instances[0].x / 64] != '1')
 	{
 		hookall->img_player->instances[0].y -= 64;
-		ft_printf("Number of moves: %u\n", ++hookall->movescount);
+		++hookall->movescount;
+		ft_stepcount_bonus(hookall);
 	}
 	usleep(150000);
 }
@@ -51,7 +54,8 @@ static void	ft_playerdown(t_all *hookall)
 			/ 64][hookall->img_player->instances[0].x / 64] != '1')
 	{
 		hookall->img_player->instances[0].y += 64;
-		ft_printf("Number of moves: %u\n", ++hookall->movescount);
+			++hookall->movescount;
+		ft_stepcount_bonus(hookall);
 	}
 	usleep(150000);
 }

@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/25 19:12:54 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/29 19:35:49 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char *argv[])
 	ft_makewindow(&all);
 	ft_buildmap(&all);
 	all.movescount = 0;
+	ft_stepinit(&all);
 	mlx_loop_hook(all.mlx, ft_playerhook, &all);
 	mlx_loop_hook(all.mlx, ft_checkhook, &all);
 	mlx_loop(all.mlx);

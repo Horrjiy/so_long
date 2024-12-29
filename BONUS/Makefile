@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2024/12/28 16:08:39 by mpoplow          ###   ########.fr        #
+#    Updated: 2024/12/29 14:55:49 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBMLX	= ./MLX42
 CFILES 	= src/loadimg.c src/main.c src/error.c \
 			src/mapcheck.c src/mapanalyze.c src/mapbuild.c \
 			src/player.c src/checkhook.c \
-			src/loadimgBONUS.c src/stepcounterBONUS.c src/enemyBONUS.c \
+			src/stepcount_bonus.c \
 			
 OFILES 	= $(CFILES:.c=.o)
 
