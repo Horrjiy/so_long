@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/29 19:35:49 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/29 21:47:12 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char *argv[])
 		return (ft_error("WRONG INPUT: 'argc != 2'!", NULL, NULL), 1);
 	ft_bzero(&all, sizeof(t_all));
 	ft_mapanalyze(&all, argv[1]);
+	ft_introscreen();
 	ft_makewindow(&all);
 	ft_buildmap(&all);
 	all.movescount = 0;
@@ -43,4 +44,43 @@ void	ft_makewindow(t_all *all)
 	img = mlx_new_image(all->mlx, (64 * all->mapsizex), (64 * all->mapsizey));
 	ft_memset(img->pixels, 0, img->width * img->height * sizeof(int32_t));
 	mlx_image_to_window(all->mlx, img, 0, 0);
+}
+
+int	ft_introscreen(void)
+{
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	mlx_texture_t	*tex;
+
+	mlx = mlx_init(800, 600, "so_long_bonus by Mpoplow", false);
+	tex = mlx_load_png("img/bonusscreen/intro.png");
+	if (!tex)
+		return (ft_error("", NULL, NULL), 0);
+	img = mlx_texture_to_image(mlx, mlx_load_png("img/bonusscreen/intro.png"));
+	if (!img)
+		return (free(tex), ft_error("", NULL, NULL), 0);
+	mlx_image_to_window(mlx, img, 0, 0);
+	mlx_loop_hook(mlx, ft_esc_hook, mlx);
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
+	free(tex);
+	return (0);
+}
+
+void	ft_esc_hook(void *vptr)
+{
+	mlx_t	*mlx;
+
+	mlx = vptr;
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_W))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_A))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_S))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_D))
+		mlx_close_window(mlx);
+
 }

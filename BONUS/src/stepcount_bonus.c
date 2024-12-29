@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 14:55:53 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/29 19:22:07 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/29 21:24:29 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_stepcount_bonus(t_all *all)
 		stepstr = ft_itoa(all->movescount);
 		ft_strlcpy(imgpath, "img/stepbonus/numx.png", 23);
 		digit = 0;
-		numlength = ft_calclength(all, stepstr);
+		numlength = ft_strlen(stepstr);
 		while (digit < numlength)
 		{
 			imgpath[17] = stepstr[digit];
@@ -52,22 +52,6 @@ void	ft_stepcount_bonus(t_all *all)
 		}
 		free(stepstr);
 	}
-}
-
-int	ft_calclength(t_all *all, char *stepstr)
-{
-	int	i;
-	int	len;
-
-	len = ft_strlen(stepstr);
-	i = 5 - len;
-	// while (i > 0)
-	// {
-	// 	ft_loadimg_num(all, i, "img/stepbonus/num0.png");
-	// 	i--;
-	// }
-	(void)all;
-	return (len);
 }
 
 void	ft_loadimg_num(t_all *all, int column, char *imgpath)
@@ -81,7 +65,10 @@ void	ft_loadimg_num(t_all *all, int column, char *imgpath)
 		ft_error("", NULL, all->map);
 	img = mlx_texture_to_image(all->mlx, tex);
 	if (!img)
-		free(tex), ft_error("", NULL, NULL);
+	{
+		free(tex);
+		ft_error("", NULL, NULL);
+	}
 	mlx_image_to_window(all->mlx, img, (64 * column), (64 * 0));
 	mlx_delete_texture(tex);
 }

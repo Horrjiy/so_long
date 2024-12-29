@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:52:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/29 18:48:48 by mpoplow          ###   ########.fr       */
+/*   Updated: 2024/12/29 21:27:15 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void				ft_buildentities(t_all *all, int row, int column);
 void				ft_stepinit(t_all *all);
 void				ft_stepcount_bonus(t_all *all);
 void				ft_loadimg_num(t_all *all, int column, char *imgpath);
-int					ft_calclength(t_all *all, char *stepstr);
 int					ft_loadimg_boot(t_all *all);
+int					ft_introscreen(void);
+void				ft_esc_hook(void *vptr);
 
 #endif
