@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/29 21:47:12 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/02 15:57:51 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,4 @@ void	ft_esc_hook(void *vptr)
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_D))
 		mlx_close_window(mlx);
-
 }

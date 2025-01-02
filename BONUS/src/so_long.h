@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:52:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/29 21:27:15 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/02 16:04:58 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_all
 	int				counte;
 	int				countp;
 	unsigned int	movescount;
+	unsigned int	countermax;
 }					t_all;
 
 void				freem(char **map);

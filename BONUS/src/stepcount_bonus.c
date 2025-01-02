@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 14:55:53 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/29 21:24:29 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/02 16:04:15 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,22 @@ void	ft_stepinit(t_all *all)
 	ft_loadimg_boot(all);
 	ft_loadimg_num(all, 1, "img/stepbonus/num0.png");
 	ft_loadimg_num(all, 2, "img/stepbonus/num0.png");
+	all->countermax = 99;
 	if (all->mapsizex >= 4)
+	{
 		ft_loadimg_num(all, 3, "img/stepbonus/num0.png");
+		all->countermax = 999;
+	}
 	if (all->mapsizex >= 5)
+	{
 		ft_loadimg_num(all, 4, "img/stepbonus/num0.png");
+		all->countermax = 9999;
+	}
 	if (all->mapsizex >= 6)
+	{
 		ft_loadimg_num(all, 5, "img/stepbonus/num0.png");
+		all->countermax = 99999;
+	}
 }
 
 void	ft_stepcount_bonus(t_all *all)
@@ -38,7 +48,7 @@ void	ft_stepcount_bonus(t_all *all)
 	else
 		position = all->mapsizex;
 	ft_loadimg_boot(all);
-	if (all->movescount <= 99999)
+	if (all->movescount <= all->countermax)
 	{
 		stepstr = ft_itoa(all->movescount);
 		ft_strlcpy(imgpath, "img/stepbonus/numx.png", 23);
