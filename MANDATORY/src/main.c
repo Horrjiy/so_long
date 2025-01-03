@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/25 19:12:54 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/03 11:35:16 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		return (ft_error("WRONG INPUT: 'argc != 2'!", NULL, NULL), 1);
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	ft_bzero(&all, sizeof(t_all));
 	ft_mapanalyze(&all, argv[1]);
 	ft_makewindow(&all);
@@ -36,7 +37,7 @@ void	ft_makewindow(t_all *all)
 	mlx_image_t	*img;
 
 	all->mlx = mlx_init((64 * all->mapsizex), (64 * all->mapsizey),
-			"so_long mpoplow42", false);
+			"so_long mpoplow42", true);
 	if (!all->mlx)
 		ft_error("mlx failed", NULL, all->map);
 	img = mlx_new_image(all->mlx, (64 * all->mapsizex), (64 * all->mapsizey));

@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:34:40 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/02 15:57:51 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/03 12:47:28 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		return (ft_error("WRONG INPUT: 'argc != 2'!", NULL, NULL), 1);
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	ft_bzero(&all, sizeof(t_all));
 	ft_mapanalyze(&all, argv[1]);
 	ft_introscreen();
@@ -38,7 +39,7 @@ void	ft_makewindow(t_all *all)
 	mlx_image_t	*img;
 
 	all->mlx = mlx_init((64 * all->mapsizex), (64 * all->mapsizey),
-			"so_long mpoplow42", false);
+			"so_long mpoplow42", true);
 	if (!all->mlx)
 		ft_error("mlx failed", NULL, all->map);
 	img = mlx_new_image(all->mlx, (64 * all->mapsizex), (64 * all->mapsizey));
@@ -52,18 +53,19 @@ int	ft_introscreen(void)
 	mlx_image_t		*img;
 	mlx_texture_t	*tex;
 
-	mlx = mlx_init(800, 600, "so_long_bonus by Mpoplow", false);
 	tex = mlx_load_png("img/bonusscreen/intro.png");
 	if (!tex)
 		return (ft_error("", NULL, NULL), 0);
-	img = mlx_texture_to_image(mlx, mlx_load_png("img/bonusscreen/intro.png"));
+	mlx = mlx_init(800, 600, "so_long_bonus by Mpoplow", false);
+	img = mlx_texture_to_image(mlx, tex);
 	if (!img)
 		return (free(tex), ft_error("", NULL, NULL), 0);
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_loop_hook(mlx, ft_esc_hook, mlx);
 	mlx_loop(mlx);
+	mlx_delete_texture(tex);
+	mlx_delete_image(mlx, img);
 	mlx_terminate(mlx);
-	free(tex);
 	return (0);
 }
 

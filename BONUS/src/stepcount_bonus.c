@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 14:55:53 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/02 16:04:15 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/03 11:52:45 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	ft_stepcount_bonus(t_all *all)
 	if (all->movescount <= all->countermax)
 	{
 		stepstr = ft_itoa(all->movescount);
+		if(!stepstr)
+			ft_error("malloc failed", NULL, all->map);
 		ft_strlcpy(imgpath, "img/stepbonus/numx.png", 23);
 		digit = 0;
 		numlength = ft_strlen(stepstr);
