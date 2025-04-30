@@ -1,4 +1,4 @@
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++~+~+~+~+~+~+~+~+~+~+~+
 
 Usage:
 MANDATORY: (Basic version)
@@ -9,7 +9,7 @@ BONUS: (Improved Version)
 - 'make all' in the Bonus folder
 - ./so_long_bonus <map.ber>
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++~+~+~+~+~+~+~+~+~+~+~+
 
 Map making:
 The map can be composed of only these 5 characters:
