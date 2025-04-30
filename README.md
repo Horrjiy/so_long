@@ -3,6 +3,8 @@
 Usage:
 ./so_long <path/map.ber>
 
+Only use for MacOS, the MLX42 library has several issues with Linux and Windows.
+
 -#---#---#---#---#---#---#---#---#---#---#-
 
 Map making:
@@ -16,5 +18,3 @@ P for the player’s starting position.
 - The map must be rectangular.
 - The map must be closed/surrounded by walls.
 - The map must contain exactly 1 exit, 1 starting position, and at least 1 collectible to be valid.
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
