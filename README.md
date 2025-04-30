@@ -1,15 +1,9 @@
-+~+~+~+~+~+~+~+~+~+~+~+
+-#---#---#---#---#---#---#---#---#---#---#-
 
 Usage:
-MANDATORY: (Basic version)
-- 'make all' in mandatory folder
-- ./so_long <map.ber>
+./so_long <path/map.ber>
 
-BONUS: (Improved Version)
-- 'make all' in the Bonus folder
-- ./so_long_bonus <map.ber>
-
-+~+~+~+~+~+~+~+~+~+~+~+
+-#---#---#---#---#---#---#---#---#---#---#-
 
 Map making:
 The map can be composed of only these 5 characters:
